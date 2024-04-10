@@ -6,9 +6,8 @@ from information import info
 
 with sq.connect('../BD 2024/jewelry_shop.db') as con:
     cur = con.cursor()
-    cur.execute("""CREATE TABLE IF NOT EXISTS Product (Name_client TEXT NOT NUll, Name_master TEXT NOT NULL, Type_product TEXT NOT NULL, Material TEXT NOT NULL, Price REAL NOT NUll)""")
-    cur.executemany("""insert into Product values(?, ?, ?, ?, ?) """, info)
-
+    # cur.execute("""CREATE TABLE IF NOT EXISTS Product (Name_client TEXT NOT NUll, Name_master TEXT NOT NULL, Type_product TEXT NOT NULL, Material TEXT NOT NULL, Price REAL NOT NUll)""")
+    # cur.executemany("""insert into Product values(?, ?, ?, ?, ?) """, info)
     cur.execute("""SELECT DISTINCT * FROM Product WHERE Price < 1500""")
     result1 = cur.fetchall()
     cur.execute("""SELECT DISTINCT * FROM Product WHERE Type_product = 'Кольцо'""")
@@ -16,7 +15,6 @@ with sq.connect('../BD 2024/jewelry_shop.db') as con:
     cur.execute("""SELECT DISTINCT * FROM Product WHERE Price = 3800 """)
     result3 = cur.fetchall()
     print(result1)
-
     cur.execute("""UPDATE Product SET Price = 100 WHERE Name_client LIKE 'Даша'""")
     cur.execute("""SELECT DISTINCT * FROM Product WHERE Name_client = 'Даша'""")
     result4 = cur.fetchall()
@@ -27,7 +25,6 @@ with sq.connect('../BD 2024/jewelry_shop.db') as con:
     cur.execute("""SELECT DISTINCT * FROM Product WHERE Price > 200 """)
     result6 = cur.fetchall()
     print(result4)
-
     cur.execute("""DELETE FROM Product WHERE Type_product LIKE 'Кольцо'""")
     cur.execute("""SELECT DISTINCT * FROM Product WHERE Type_product = 'Кольцо'""")
     result7 = cur.fetchall()
