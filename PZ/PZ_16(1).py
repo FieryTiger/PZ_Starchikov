@@ -21,11 +21,11 @@ class Woman(Human):
     def __init__(self, name, age):
         super().__init__(name, age, 'женский')
 
-    def sex_1(self):
+    def sex_2(self):
         return f'{self.name}, {self.age} - женщина'
 
 
 man = Man('Олег', 12)
 woman = Woman('Оля', 15)
 print(man.sex_1())
-print(woman.sex_1())
+print(woman.sex_2())
